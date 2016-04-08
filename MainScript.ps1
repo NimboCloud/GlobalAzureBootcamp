@@ -1,5 +1,5 @@
 ﻿
-Login-AzureRmAccount -SubscriptionId  f794c958-ef55-4f8c-834b-a90d282fb3bd 
+Login-AzureRmAccount -SubscriptionId  [SUB ID]
 #Remove-AzureRmResourceGroup -Name bootcampnyc
 
 New-AzureRmResourceGroup -Name sr-bootcamp -Location 'East US' -Force
