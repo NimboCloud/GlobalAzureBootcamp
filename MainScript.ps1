@@ -8,15 +8,15 @@ $Deployment = @{
 	Name='shashideployment1';
 	ResourceGroupName='rgrainas';
 	Mode='Complete';
-	#TemplateFile="$PSScriptRoot\azure.json";
+
 	TemplateFile="C:\projects\AzureBootCampV1\DeploymentScript\azure-C_WEB.json";
 	TemplateParameterObject =@{
-		StorageAccountName='strainas'; //globally unique
+		StorageAccountName='strainas'; #globally unique
 		adminUsername='shashi';
 		adminPassword='*****'; // Uppercase, letter and special character
-		dnsNameForPublicIP1='ip1rainas'; //globally unique
-		dnsNameForPublicIP2='ip2rainas'; //globally unique
-		dnsNameforLBIP= 'lbrainas'; //globally unique
+		dnsNameForPublicIP1='ip1rainas'; #globally unique
+		dnsNameForPublicIP2='ip2rainas'; #globally unique
+		dnsNameforLBIP= 'lbrainas'; #globally unique
 	}
 
 }
