@@ -15,4 +15,5 @@ Attending the Global Azure Bootcamp 2016? This repository contains the materials
 Steps to open the code:
 
 1) Download the code as zip file to local folder
+
 2) Open the "DeploymentScript.sln" file in Visual Studio and the entire project should open up with all the code files
