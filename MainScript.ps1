@@ -1,12 +1,12 @@
 ﻿
 Login-AzureRmAccount -SubscriptionId  [Your ID]
 #Remove-AzureRmResourceGroup -Name bootcampnyc
-
-New-AzureRmResourceGroup -Name rgrainas -Location 'East US' -Force
+$rgname='rgrainas'
+New-AzureRmResourceGroup -Name $rgname -Location 'East US' -Force
 
 $Deployment = @{
 	Name='shashideployment1';
-	ResourceGroupName='rgrainas';
+	ResourceGroupName= $rgname;
 	Mode='Complete';
 
 	TemplateFile="C:\projects\AzureBootCampV1\DeploymentScript\azure-C_WEB.json";
