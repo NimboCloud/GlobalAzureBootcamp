@@ -1,22 +1,22 @@
 ﻿
-Login-AzureRmAccount -SubscriptionId  f794c958-ef55-4f8c-834b-a90d282fb3bd 
+Login-AzureRmAccount -SubscriptionId  [Your ID]
 #Remove-AzureRmResourceGroup -Name bootcampnyc
 
-New-AzureRmResourceGroup -Name sr-bootcamp1 -Location 'East US' -Force
+New-AzureRmResourceGroup -Name rgrainas -Location 'East US' -Force
 
 $Deployment = @{
 	Name='shashideployment1';
-	ResourceGroupName='sr-bootcamp1';
+	ResourceGroupName='rgrainas';
 	Mode='Complete';
 	#TemplateFile="$PSScriptRoot\azure.json";
 	TemplateFile="C:\projects\AzureBootCampV1\DeploymentScript\azure-C_WEB.json";
 	TemplateParameterObject =@{
-		StorageAccountName='srbootcamp1';
+		StorageAccountName='strainas'; //globally unique
 		adminUsername='shashi';
-		adminPassword='Raina123!'; 
-		dnsNameForPublicIP1='sr-bootcamp10';
-		dnsNameForPublicIP2='sr-bootcamp20';
-		dnsNameforLBIP= 'sr-bootcamplb0';
+		adminPassword='*****'; // Uppercase, letter and special character
+		dnsNameForPublicIP1='ip1rainas'; //globally unique
+		dnsNameForPublicIP2='ip2rainas'; //globally unique
+		dnsNameforLBIP= 'lbrainas'; //globally unique
 	}
 
 }
