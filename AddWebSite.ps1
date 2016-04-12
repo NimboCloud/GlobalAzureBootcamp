@@ -1,11 +1,14 @@
 Configuration bootcampwebsite
 {
+	
+
   param (
     $MachineName,
-    $WebDeployPackagePath,
-    $UserName,
-    $Password
+    $WebDeployPackagePath
+   
     )
+	
+	
 
   Node $MachineName
   {
@@ -29,48 +32,9 @@ Configuration bootcampwebsite
         Ensure = "Present"
     }
     
-     #script block to download Web Platform Installer MSI from Microsoft
-    Script DownloadWebPIImage
-    {
-        GetScript = {
-            @{
-                Result = "WebPIInstall"
-            }
-        }
-        TestScript = {
-            Test-Path "C:\WindowsAzure\wpilauncher.exe"
-        }
-        SetScript ={
-            $source = "http://go.microsoft.com/fwlink/?LinkId=255386"
-            $destination = "C:\WindowsAzure\wpilauncher.exe"
-            Invoke-WebRequest $source -OutFile $destination
-       
-        }
-    }
+	 
     
-    #Installs the Web Platform Installer
-    Package WebPi_Installation
-        {
-            Ensure = "Present"
-            Name = "Microsoft Web Platform Installer 5.0"
-            Path = "C:\WindowsAzure\wpilauncher.exe"
-            ProductId = '4D84C195-86F0-4B34-8FDE-4A17EB41306A'
-            Arguments = ''
-        }
-
-    #Use Web Platform Installer to install Web Deploy
-    Package WebDeploy_Installation
-        {
-            Ensure = "Present"
-            Name = "Microsoft Web Deploy 3.5"
-            Path = "$env:ProgramFiles\Microsoft\Web Platform Installer\WebPiCmd-x64.exe"
-            ProductId = ''
-            #Arguments = "/install /products:ASPNET45,ASPNET_REGIIS_NET4,NETFramework452,NETFramework4Update402,NetFx4,NetFx4Extended-ASPNET45,NetFxExtensibility45,DefaultDocument,DirectoryBrowse,StaticContent,StaticContentCompression,WDeploy  /AcceptEula"
-			      Arguments = "/install /products:WDeploy  /AcceptEula"
-			      DependsOn = @("[Package]WebPi_Installation")
-        }
-	
-    #Deploy the Web Package with Web Deploy to IIS
+    #Download the Website Package 
     Script DeployWebPackage
     {
       GetScript = {
@@ -85,23 +49,22 @@ Configuration bootcampwebsite
 		  $WebClient = New-Object -TypeName System.Net.WebClient
           $Destination= "C:\WindowsAzure\WebApplication.zip" 
           $WebClient.DownloadFile($using:WebDeployPackagePath,$destination)   
-		#  $arguments = [string[]]@(
-  #      "-verb:sync",
-  #      "-source:package='C:\WindowsAzure\WebApplication.zip'",
-  #      "-dest:auto,computerName='localhost',userName='$UserName',password='$Password',authtype='Basic'",
-  #      "-setParam:name='IIS Web Application Name',value='azurebootcamp'",
-  #      "-allowUntrusted")
-		#$msdeploy = (Get-ChildItem "HKLM:\SOFTWARE\Microsoft\IIS Extensions\MSDeploy" | Select -Last 1).GetValue("InstallPath")
-  #      Start-Process "$msdeploy\msdeploy.exe" -ArgumentList $arguments -NoNewWindow -Wait
-			  
-  
-       
-          
+		  
           }
 
-		
-}
+		}
 
-  
+	   #unzip and copy the website content
+	  
+	 Archive ArchiveExample {
+    Ensure = "Present"  # You can also set Ensure to "Absent"
+    Path = "C:\WindowsAzure\WebApplication.zip"
+    Destination = "c:\inetpub\"
+    DependsOn="[Script]DeployWebPackage"
     }
-  }
+
+	 
+		}
+	  
+
+	}
