@@ -17,3 +17,9 @@ Steps to open the code:
 1) Download the code as zip file to local folder
 
 2) Open the "DeploymentScript.sln" file in Visual Studio and the entire project should open up with all the code files
+
+Sample Website code:
+
+https://onedrive.live.com/redir?resid=6D181FFE828D01F1!1510&authkey=!ALKOzQ_jzBm9ITQ&ithint=file%2czip
+
+
