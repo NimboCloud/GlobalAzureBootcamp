@@ -26,11 +26,17 @@ DSC code snippet:
 vm1:
  "settings": {
                             "ModulesUrl": "[parameters('vmDSCExtensionModulesUrl')]", //The url to the
+                            
                             "sasToken": "[parameters('artifactsLocationSasToken')]",
+                            
                             "configurationFunction": "[parameters('vmDSCExtensionConfigurationFunction')]", //The function to call, in the format azuredkwebsite.ps1\\azuredkwebsite
+                            
                             "properties": {
+                            
                                 "MachineName": "[variables('vmName1')]",
+                                
                                 //Add the extra parameters the new DSC module needs
+                                
                                 "WebDeployPackagePath": "[parameters('vmDSCDeployPackageUrl')]"
                               
                             }
