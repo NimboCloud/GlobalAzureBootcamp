@@ -1,22 +1,27 @@
-﻿
-Login-AzureRmAccount -SubscriptionId  [Your ID]
+﻿#Login-AzureRmAccount -SubscriptionId  "f794c958-ef55-4f8c-834b-a90d282fb3bd";
 #Remove-AzureRmResourceGroup -Name bootcampnyc
-$rgname='rgrainas'
-New-AzureRmResourceGroup -Name $rgname -Location 'East US' -Force
+$userName = "byoung55";
+$templateFile = "azure-C.json";
+
+#-----------------------------------------#
+# Nothing below here needs to be modified #
+#-----------------------------------------#
+$deploymentName = "deployment";
+$rgname="rg" + $userName;
+New-AzureRmResourceGroup -Name $rgname -Location "East US" -Force
 
 $Deployment = @{
-	Name='shashideployment1';
+	Name=$userName + $deployment;
 	ResourceGroupName= $rgname;
-	Mode='Complete';
 
-	TemplateFile="C:\projects\AzureBootCampV1\DeploymentScript\azure-C_WEB.json";
+	TemplateFile=$templateFile;
 	TemplateParameterObject =@{
-		StorageAccountName='strainas'; #globally unique
-		adminUsername='shashi';
-		adminPassword='*****'; // Uppercase, letter and special character
-		dnsNameForPublicIP1='ip1rainas'; #globally unique
-		dnsNameForPublicIP2='ip2rainas'; #globally unique
-		dnsNameforLBIP= 'lbrainas'; #globally unique
+		StorageAccountName="st" +$userName; #globally unique
+		adminUsername=$userName;
+		adminPassword='BootCamp2016!'; # Uppercase, letter and special character
+		dnsNameForPublicIP1="ip1" + $userName; #globally unique
+		dnsNameForPublicIP2="ip2" + $userName; #globally unique
+		dnsNameforLBIP= "lb" + $userName; #globally unique
 	}
 
 }
