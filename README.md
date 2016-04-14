@@ -19,9 +19,9 @@ Steps to open the code:
 
 2) Open the "DeploymentScript.sln" file in Visual Studio and the entire project should open up with all the code files
 
-Sample Website code:
+Download Source for sample Website code (For PaaS deployment):
 
-https://onedrive.live.com/redir?resid=6D181FFE828D01F1!1510&authkey=!ALKOzQ_jzBm9ITQ&ithint=file%2czip
+https://github.com/NimboCloud/GlobalAzureBootcamp-Website
 
 DSC code snippet:
 vm1:
