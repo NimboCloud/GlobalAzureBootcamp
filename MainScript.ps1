@@ -1,7 +1,7 @@
-﻿Login-AzureRmAccount -SubscriptionId  "YourId";
+﻿Login-AzureRmAccount -SubscriptionId  "f794c958-ef55-4f8c-834b-a90d282fb3bd";
 
-$userName = "GlobalyUniqueUserName";
-$templateFile = "azure-A.json";
+$userName = "byoung";
+$templateFile = [environment]::getfolderpath("mydocuments") + "\\GitHub\\GlobalAzureBootcamp\\azure-C.json";
 
 #-----------------------------------------#
 # Nothing below here needs to be modified #
@@ -17,8 +17,8 @@ $Deployment = @{
 
 	TemplateFile = $templateFile;
 	TemplateParameterObject = @{
-		StorageAccountName = "st" +$userName;
-    adminUsername = $userName;
+		StorageAccountName = "st" + $userName;
+		adminUsername = $userName;
 		adminPassword = "BootCamp2016!";
 		dnsNameForPublicIP1 = "ip1" + $userName;
 		dnsNameForPublicIP2 = "ip2" + $userName;
@@ -27,4 +27,4 @@ $Deployment = @{
 
 }
 
-New-AzureRmResourceGroupDeployment  @Deployment;
+New-AzureRmResourceGroupDeployment @Deployment;
