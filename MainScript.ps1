@@ -1,6 +1,6 @@
-﻿Login-AzureRmAccount -SubscriptionId  "f794c958-ef55-4f8c-834b-a90d282fb3bd";
+﻿Login-AzureRmAccount -SubscriptionId  "00000000-0000-0000-0000-000000000000";
 
-$userName = "byoung";
+$userName = "johnSmith";
 $templateFile = [environment]::getfolderpath("mydocuments") + "\\GitHub\\GlobalAzureBootcamp\\azure-C.json";
 
 #-----------------------------------------#
