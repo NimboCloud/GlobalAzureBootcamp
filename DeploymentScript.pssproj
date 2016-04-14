@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddWebSite.ps1" />
+    <Compile Include="azure-D.json" />
     <Compile Include="MainScript.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
