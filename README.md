@@ -4,11 +4,12 @@ Attending the Global Azure Bootcamp 2016? This repository contains the materials
 -  Contains 3 JSON modules : A, B and C.  
 -                              Module A: Builds foundation resources
 -                              Module B: Builds load balancer
--                              Module C: Builds VM and applies DSC
+-                              Module C: Builds VM 
+-                              Module D: Builds VM and applies DSC for website deployment
                     
 -
 -  2 powershell script files:
--                            MainScript.ps1 is the execution script for creating resource group.
+-                            MainScript.ps1 is the execution script for creating resource group. 
 -                            AddWebSite.ps1 is DSC file to add IIS role and website binaries
 
 
