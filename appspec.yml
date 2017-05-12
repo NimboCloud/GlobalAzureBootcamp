@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /azure-A.ps1
+  - source: /azure-A.json
     destination: /var/testpipelinetarget1/
-  - source: /azure-B.ps1
+  - source: /azure-B.json
     destination: /var/testpipelinetarget2/
     
