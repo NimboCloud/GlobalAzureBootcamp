@@ -3,6 +3,6 @@ os: linux
 files:
   - source: /azure-A.ps1
     destination: /var/testpipelinetarget1/
-   - source: /azure-B.ps1
+  - source: /azure-B.ps1
     destination: /var/testpipelinetarget2/
     
